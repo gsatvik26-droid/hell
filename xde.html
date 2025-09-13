@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sanrio Flower App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      min-height: 100dvh;
+      background: #fcecfc;
+      overflow: hidden;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
+    .flower {
+      position: absolute;
+      width: 9vw;
+      min-width: 26px;
+      max-width: 42px;
+      height: auto;
+      pointer-events: none;
+      opacity: 0.8;
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      0% { transform: translateY(-55px) rotate(0deg) scale(0.85); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(360deg) scale(1.03); opacity: 0.5; }
+    }
+    .center-content {
+      position: absolute;
+      top: 58%;
+      left: 50%;
+      width: 95vw;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 1;
+    }
+    .sanrio-pair {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 4vw;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+    .sanrio-pair img {
+      width: 28vw;
+      max-width: 115px;
+      min-width: 62px;
+      aspect-ratio: 1 / 1;
+      border-radius: 22px;
+      box-shadow: 0 4px 14px rgba(200, 130, 150, 0.18);
+      background: #fff8;
+      object-fit: contain;
+    }
+    .cute-text {
+      font-size: 2.2rem;
+      color: #ff70b5;
+      text-shadow: 0 3px 10px #fff;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+    }
+    @media (max-width: 500px) {
+      .sanrio-pair { gap: 7vw; }
+      .sanrio-pair img { width: 40vw; max-width: 92px; min-width: 46px; }
+      .cute-text { font-size: 1.4rem; }
+      .center-content { top: 52%; }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    const colors = ['#ffb7ea','#fce38a','#b8f2e6','#f38181','#95e1d3','#fcdfff'];
+    for (let i = 0; i < 28; i++) {
+      let flower = document.createElement('div');
+      flower.className = 'flower';
+      flower.style.left = (Math.random() * 98) + 'vw';
+      flower.style.animationDuration = (2.2 + Math.random() * 3.3) + 's';
+      flower.style.animationDelay = (Math.random() * 2.7) + 's';
+      flower.innerHTML = `<svg viewBox="0 0 32 32" style="width:100%;height:100%;"><circle cx="16" cy="16" r="10" fill="${colors[Math.floor(Math.random()*colors.length)]}" /><circle cx="16" cy="7" r="6" fill="${colors[Math.floor(Math.random()*colors.length)]}" /><circle cx="16" cy="25" r="6" fill="${colors[Math.floor(Math.random()*colors.length)]}" /><circle cx="7" cy="16" r="6" fill="${colors[Math.floor(Math.random()*colors.length)]}" /><circle cx="25" cy="16" r="6" fill="${colors[Math.floor(Math.random()*colors.length)]}" /><circle cx="16" cy="16" r="6" fill="#fff0fa"/></svg>`;
+      document.body.appendChild(flower);
+    }
+  </script>
+  <div class="center-content">
+    <div class="sanrio-pair">
+      <img src="https://i.pinimg.com/736x/76/0e/a8/760ea8b008336a18fd529a8596f6e97c.jpg" alt="Cinnamoroll Cute" />
+      <img src="https://i.pinimg.com/736x/de/b1/dd/deb1dd34fdb7e81bcd6128ad6d31b18e.jpg" alt="Pompompurin Cute" />
+    </div>
+    <div class="cute-text">uss</div>
+  </div>
+</body>
+</html>
